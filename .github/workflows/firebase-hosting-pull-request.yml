@@ -9,12 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci && npm run build
+      - run: |
+          touch .env
+          echo "VITE_OPEN_WEATHER_MAP=${{ secrets.VITE_OPEN_WEATHER_MAP }}" >> .env
+          echo "VITE_MAPBOX=${{ secrets.VITE_MAPBOX }}" >> .env
+          npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_OSHIBON_MAKER_45160 }}"
           projectId: oshibon-maker-45160
-        env:
-          VITE_OPEN_WEATHER_MAP: ${{ secrets.VITE_OPEN_WEATHER_MAP }}
-          VITE_MAPBOX: ${{ secrets.VITE_MAPBOX }}
