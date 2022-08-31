@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "oshibon-maker-45160"
+  },
+  "targets": {
+    "oshibon-maker-45160": {
+      "hosting": {
+        "weather": [
+          "weather-app-6b0f8"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
